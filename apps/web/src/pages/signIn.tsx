@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import SignInFeature from '@peakee/app/features/SignIn';
 import { useRouter } from 'next/router';
 
@@ -21,9 +21,11 @@ const SignIn: FC = () => {
 	}, [user]);
 
 	return (
-		<View style={containerStyle}>
-			<SignInFeature onPressSignIn={signIn} />
-		</View>
+		<SignInFeature
+			style={containerStyle}
+			titleStyle={styles.titleContainer}
+			onPressSignIn={signIn}
+		/>
 	);
 };
 
@@ -31,17 +33,23 @@ export default SignIn;
 
 const styles = StyleSheet.create({
 	boxContainer: {
-		borderWidth: 1,
-		borderColor: '#B1B6C1',
-		borderRadius: 20,
-		alignSelf: 'center',
+		width: 460,
 		marginVertical: 'auto',
 		paddingVertical: 60,
 		paddingHorizontal: 40,
-		width: 460,
+		gap: 100,
+		alignSelf: 'center',
+		borderWidth: 1,
+		borderColor: '#B1B6C1',
+		borderRadius: 20,
 	},
 	fullContainer: {
 		flex: 1,
 		paddingHorizontal: 20,
+		paddingBottom: 20,
+	},
+	titleContainer: {
+		flex: 1,
+		justifyContent: 'center',
 	},
 });

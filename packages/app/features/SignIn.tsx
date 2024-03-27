@@ -1,25 +1,36 @@
 import type { FC } from 'react';
+import type { StyleProp, ViewStyle } from 'react-native';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { useAssets } from '../utils';
 
 type Props = {
 	onPressSignIn?: () => void;
+	style?: StyleProp<ViewStyle>;
+	titleStyle?: StyleProp<ViewStyle>;
+	buttonStyle?: StyleProp<ViewStyle>;
 };
 
-const SignInFeature: FC<Props> = ({ onPressSignIn }) => {
+const SignInFeature: FC<Props> = ({
+	onPressSignIn,
+	style,
+	titleStyle,
+	buttonStyle,
+}) => {
 	const { assets } = useAssets();
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Peakee</Text>
-			<Image
-				style={styles.titleImage}
-				source={assets?.authImage}
-				resizeMode="contain"
-			/>
+		<View style={style}>
+			<View style={titleStyle}>
+				<Text style={styles.title}>Peakee</Text>
+				<Image
+					style={styles.titleImage}
+					source={assets?.authImage}
+					resizeMode="contain"
+				/>
+			</View>
 			<TouchableOpacity
-				style={styles.signInButton}
+				style={[styles.signInButton, buttonStyle]}
 				onPress={onPressSignIn}
 			>
 				<Image style={styles.googleImage} source={assets?.google} />
@@ -32,11 +43,6 @@ const SignInFeature: FC<Props> = ({ onPressSignIn }) => {
 export default SignInFeature;
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		gap: 40,
-	},
 	title: {
 		fontSize: 50,
 		fontWeight: '900',
