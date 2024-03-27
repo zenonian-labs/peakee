@@ -34,6 +34,8 @@ target 'mobile' do
   pod 'Firebase', :modular_headers => true
   pod 'FirebaseCore', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
+  pod 'GTMSessionFetcher', :modular_headers => true
+  pod 'AppAuth', :modular_headers => true
   $RNFirebaseAsStaticFramework = true
 
   use_react_native!(
@@ -62,6 +64,6 @@ target 'mobile' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
-    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    # __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end

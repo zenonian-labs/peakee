@@ -53,12 +53,9 @@ export const signOut = async () => {
 		.then(() => console.log('User signed out!'));
 };
 
-//TODO: onIdTokenChanged only listen to id token changed, not when id token expired.
 auth().onIdTokenChanged(async (firebaseUser) => {
-	console.log('id token change');
 	if (firebaseUser) {
 		const jwt = await firebaseUser.getIdToken();
-		console.log('set jwt');
 		setJWT(jwt);
 		if (!store.getState().user.profile) {
 			const user = await getOrInitUserProfile({
@@ -68,7 +65,6 @@ auth().onIdTokenChanged(async (firebaseUser) => {
 			});
 			if (user) {
 				store.dispatch(setProfile(user));
-				console.log('set user', user);
 			}
 			store.dispatch(setProfileLoading(false));
 		}

@@ -16,7 +16,7 @@
         "lodash": "^4.17.21",
         "openai": "^4.14.2",
         "react": "^18.2.0",
-        "react-native": "0.72.4",
+        "react-native": "^0.73.6",
         "react-native-reanimated": "^3.5.4"
     },
     "devDependencies": {

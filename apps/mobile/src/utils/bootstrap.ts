@@ -61,6 +61,4 @@ export const initApp = () => {
 			});
 		},
 	});
-
-	initOpenAIClient(Config.OPENAI_API_KEY as string);
 };
